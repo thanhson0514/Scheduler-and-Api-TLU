@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/compat-data": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -35,5 +37,11 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://sv20.tlu.edu.vn:8092/education"
+  "resolutions": {
+    "@babel/preset-env": "7.5.5"
+  },
+  "proxy": "http://sv20.tlu.edu.vn:8092/education",
+  "devDependencies": {
+    "@babel/plugin-proposal-numeric-separator": "^7.8.3"
+  }
 }
