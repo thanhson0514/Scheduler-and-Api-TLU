@@ -1,0 +1,196 @@
+nav {
+  padding: 12px;
+  background-color: #aa22bb;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+nav h3 {
+  padding: 0;
+  margin: 0;
+  text-shadow: 0.4px 4px 5px rgba(0, 0, 0, 0.5);
+  font-weight: 300;
+  user-select: none;
+  transition: 200ms ease;
+}
+.title {
+  display: flex;
+  align-items: center;
+}
+nav a {
+  color: #fff;
+  padding: 0;
+  text-decoration: none;
+  transition: 200ms ease;
+}
+
+nav a:hover {
+  color: dodgerblue;
+}
+
+.tool {
+  opacity: 0;
+  position: absolute;
+  right: 4px;
+  font-size: 12px;
+}
+
+.tool a {
+  margin-right: 0.82rem;
+  font-size: 15px;
+  transition: 0.6s;
+}
+
+.tool a i {
+  transform: translateX(-2px);
+}
+
+nav:hover .tool {
+  animation: bounceInRight 1s ease;
+  opacity: 1;
+}
+
+.tool a:hover {
+  color: dodgerblue;
+}
+
+.sideDrawer {
+  display: none;
+}
+
+.navSideDrawer {
+  /* background-color: var(--backround-color); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navSideDrawer a {
+  padding: 5px;
+  color: black;
+  text-decoration: none;
+  margin: 1rem 0;
+  transition: .5s ease;
+}
+.navSideDrawer a.active,
+.navSideDrawer a:active,
+.navSideDrawer a:hover {
+  background-color: yellow;
+  color: black;
+  font-weight: 300;
+  box-shadow: 0.5px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.side-logout {
+  text-align: center;
+  text-decoration: none;
+  color: #777 !important;
+  background-color: transparent !important;
+  font-weight: 200 !important;
+  box-shadow: none !important;
+}
+
+.switch {
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 36px;
+  height: 15px;
+  border-radius: 10px;
+  border: 1px solid;
+  background-color: #c6c6c6;
+  position: relative;
+}
+
+.switch:checked {
+  background-color: dodgerblue;
+  border: 1px solid dodgerblue;
+}
+
+.switch:before {
+  content: "";
+  position: absolute;
+  transition: 200ms ease;
+  width: 13px;
+  height: 13px;
+  top: -1px;
+  left: 0;
+  background-color: #eee;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.switch:checked:before {
+  transform: translateX(21px);
+}
+
+@media (max-width: 620px) {
+  .sideDrawer {
+    outline: none;
+    width: 2rem;
+    height: 1.5rem;
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+  }
+  .sideDrawer span {
+    display: block;
+    width: 1.5rem;
+    height: 2.5px;
+    background-color: white;
+  }
+  .tool {
+    display: none;
+  }
+  .logout {
+    display: none;
+  }
+}
+
+@keyframes bounceInRight {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(3000px, 0, 0);
+    transform: translate3d(3000px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(-25px, 0, 0);
+    transform: translate3d(-25px, 0, 0);
+  }
+
+  75% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(-5px, 0, 0);
+    transform: translate3d(-5px, 0, 0);
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}

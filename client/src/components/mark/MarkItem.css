@@ -1,0 +1,74 @@
+.container-mark {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-mark {
+  width: 40%;
+  height: auto;
+  background-color: #222;
+  color: #DED;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border: 1px solid black;
+  box-shadow: 0.2px 2px 3px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: 250ms ease;
+}
+
+.content {
+  position: relative;
+}
+
+.content__charMark {
+  position: absolute;
+  left: 80%;
+  top: 50%;
+  transform: translate(0, -50%);
+  border: 2px solid;
+  padding: 5px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.info-mark:hover {
+  transform: translateY(-5px);
+  box-shadow: 0.5px 5px 5px rgba(0, 0, 0, 0.6);
+}
+
+.content__charMark p {
+  margin: 0;
+}
+
+.content__charMark-green {
+  border: 2px solid green;
+  color: green;
+}
+
+.content__charMark-blue {
+  border: 2px solid blue;
+  color: blue;
+}
+
+.content__charMark-yellow {
+  border: 2px solid yellow;
+  color: yellow;
+}
+
+.content__charMark-purple {
+  border: 2px solid purple;
+  color: purple;
+}
+
+.content__charMark-red {
+  border: 2px solid red;
+  color: red;
+}

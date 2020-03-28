@@ -1,0 +1,14 @@
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const LOGOUT = "LOGOUT";
+export const GET_USER = "GET_USER";
+export const USER_ERROR = "USER_ERROR";
+export const LOADED_AUTH = "LOADED_AUTH";
+export const LOADED_FAIL = "LOADED_FAIL";
+export const CHANGE_PASSWORD = "CHANGE_PASSWORD";
+export const PASSWORD_FAIL = "PASSWORD_FAIL";
+export const GET_TIMES = "GET_TIMES";
+export const GET_SUBJECTS = "GET_SUBJECTS";
+export const FILTER_SUBJECTS = "FILTER_SUBJECTS";
+export const GET_MARKS = "GET_MARKS";
+export const GET_ERRORS = "GET_ERRORS";

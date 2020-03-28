@@ -1,0 +1,76 @@
+.container-form {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(5, 16, 54, 1) 4%,
+    rgba(24, 138, 190, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  color: #313131;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.form-login {
+  border-radius: 5px;
+  background-color: white;
+  padding: 1rem 1.2rem;
+  box-shadow: 0.4px 4px 12px rgba(0, 0, 0, 0.4);
+}
+.form-login h2 {
+  text-align: center;
+  font-weight: 400;
+  user-select: none;
+  text-shadow: 0.4px 4px 5px rgba(0, 0, 0, 0.5);
+}
+.form-login input {
+  display: block;
+  margin: 8px auto;
+  border: none;
+  border-bottom: 1px solid dodgerblue;
+  outline: none;
+  padding: 6px 4px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.form-login label {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  font-weight: 300;
+  font-size: 15px;
+  pointer-events: none;
+  transition: 200ms ease;
+}
+
+input:focus + label,
+input:valid + label {
+  top: -14px;
+  left: 10px;
+  font-size: 13.5px;
+  color: dodgerblue;
+}
+
+.btn {
+  border: none;
+  box-shadow: 0.2px 4px 4px rgba(0, 0, 9, 0.4);
+  background-color: dodgerblue;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  width: 100%;
+  cursor: pointer;
+  transition: 300ms ease;
+  outline: none;
+}
+
+.btn:hover {
+  background-color: #ccc;
+  color: dodgerblue;
+}

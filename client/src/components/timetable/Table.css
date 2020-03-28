@@ -1,0 +1,45 @@
+.container-table {
+  display: flex;
+  width: 60%;
+  height: auto;
+  padding: 1rem;
+  border: 1px solid;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0.2px 2px 2px rgba(0, 0, 0, 0.2);
+  transition: 0.5s ease;
+  background-color: #333;
+  color: #ccc;
+}
+
+.container-table h4 {
+  margin: 0;
+  font-weight: 300;
+  color: #eebb00;
+  transition: 250ms ease;
+}
+
+.container-table div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-table div p {
+  margin: 0.4rem;
+}
+
+.container-table:hover {
+  cursor: pointer;
+  transform: scale(1);
+  transform: translateY(-6px);
+  box-shadow: 0.6px 5px 5px rgba(0, 0, 0, 0.6);
+}
+
+.container-table:hover h4 {
+  transform: scale(1.1);
+}
