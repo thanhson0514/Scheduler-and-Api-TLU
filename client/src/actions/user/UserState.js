@@ -22,10 +22,9 @@ export const UserState = props => {
   // get info user
   const getUser = async () => {
     try {
-      const res = await axios.get("/api/student/531");
-      console.log(res.data);
+      const res = await axios.get("/api/user");
 
-      dispatch({ type: GET_USER, payload: res.data });
+      dispatch({ type: GET_USER, payload: res.data.data });
     } catch (err) {
       console.log(err);
       dispatch({ type: USER_ERROR });

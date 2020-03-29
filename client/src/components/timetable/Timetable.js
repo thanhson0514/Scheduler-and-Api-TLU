@@ -12,7 +12,6 @@ export const Timetable = () => {
   const {
     getSubjects,
     loading,
-    getTimes,
     courseSubject,
     filterSubject,
     timetables,
@@ -22,7 +21,6 @@ export const Timetable = () => {
 
   useEffect(() => {
     getSubjects();
-    getTimes();
     if (!loading) {
       filterSubject(courseSubject, weekIndex());
     }

@@ -2,12 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const path = require('path')
+const path = require("path");
 
 // router
 const verifyWebhook = require("./cron-scheduler/verify-webhook");
 const messageWebhook = require("./cron-scheduler/message-webhook");
 const notication = require("./cron-scheduler/process-scheduler");
+const router = require("./routes/router");
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // function timers
 notication.notication();
+app.use("/api", router);
 app.post("/message", messageWebhook);
 app.get("/message", verifyWebhook);
 

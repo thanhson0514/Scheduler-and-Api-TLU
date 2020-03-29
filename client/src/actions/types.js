@@ -12,3 +12,5 @@ export const GET_SUBJECTS = "GET_SUBJECTS";
 export const FILTER_SUBJECTS = "FILTER_SUBJECTS";
 export const GET_MARKS = "GET_MARKS";
 export const GET_ERRORS = "GET_ERRORS";
+export const SEND_EMAIL = "SEND_EMAIL";
+export const EMAIL_ERROR = "EMAIL_ERROR";

@@ -1,0 +1,54 @@
+.container-phone {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-phone form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid black;
+  box-shadow: 0.5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container-phone form h1 {
+    font-weight: 300;
+    text-shadow: .3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.container-phone form input:nth-child(1) {
+  margin: 1rem 0 0 0;
+}
+
+.container-phone form textarea {
+  margin: 0.5rem 0 1rem 0;
+  height: 100px;
+}
+
+.container-phone form button {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #ff0057;
+  padding: 5px;
+  color: #ddd;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.container-phone form button:hover {
+  color: #ff0057;
+  background-color: #ddd;
+  box-shadow: 0.6px 4px 5px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.container-phone form p {
+  font-size: 12px;
+  margin-bottom: .5rem;
+}

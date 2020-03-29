@@ -39,8 +39,8 @@ export const NavBar = () => {
           <NavLink to="/mark" exact>
             Mark
           </NavLink>
-          <NavLink to="/password" exact>
-            Password
+          <NavLink to="/send" exact>
+            Email
           </NavLink>
           <NavLink to="#" className="side-logout" onClick={onLogout}>
             Logout
@@ -64,9 +64,9 @@ export const NavBar = () => {
             <i className="far fa-calendar-times" />
             Timetable
           </Link>
-          <Link to="/change-password">
-            <i className="fas fa-key" />
-            Password
+          <Link to="/send">
+            <i className="far fa-envelope" />
+            Email
           </Link>
           <Link to="#" onClick={onLogout} className="logout">
             <i className="fas fa-sign-out-alt" /> Logout

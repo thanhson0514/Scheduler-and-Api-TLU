@@ -9,7 +9,8 @@ import {
   LOGIN_FAIL,
   LOADED_AUTH,
   LOADED_FAIL,
-  PASSWORD_FAIL,
+  SEND_EMAIL,
+  EMAIL_ERROR,
   LOGOUT
 } from "../types";
 const AuthState = props => {
@@ -20,11 +21,6 @@ const AuthState = props => {
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
-  const headers = {
-    Accept: "application/json, text/plain, */*",
-    "Accept-Language": "en-US,en;q=0.9",
-    "Content-Type": "application/x-www-form-urlencoded"
-  };
 
   const loadAuth = () => {
     const token = JSON.parse(localStorage.getItem("token"));
@@ -43,14 +39,15 @@ const AuthState = props => {
     }
     try {
       const { username, password } = formData;
-      const form = `client_id=education_client&grant_type=password&username=${username}&password=${password}&client_secret=password`;
       const res = await axios({
-        url: "/oauth/token",
+        url: "/api/auth",
         method: "POST",
-        headers: headers,
-        data: form
+        data: {
+          username: username,
+          password: password
+        }
       });
-      console.log(res.data);
+
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     } catch (err) {
       dispatch({
@@ -60,17 +57,23 @@ const AuthState = props => {
     }
   };
 
-  const changePassword = async (username, oldPassword, newPassword) => {
+  // send email
+  const sendEmail = async formData => {
     try {
-      await axios.post("/api/users/password/valid", {
-        password: oldPassword
+      const { phone, text } = formData;
+      const res = axios({
+        url: "/api/send",
+        method: "POST",
+        data: {
+          phone,
+          text
+        }
       });
-      await axios.put("/api/users/password/self", {
-        username: username,
-        password: newPassword
-      });
+
+      dispatch({ type: SEND_EMAIL, payload: res.data });
     } catch (err) {
-      dispatch({ type: PASSWORD_FAIL });
+      console.log(err);
+      dispatch({ type: EMAIL_ERROR });
     }
   };
 
@@ -85,7 +88,7 @@ const AuthState = props => {
         login,
         loadAuth,
         logout,
-        changePassword
+        sendEmail
       }}
     >
       {props.children}

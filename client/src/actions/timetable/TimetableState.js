@@ -21,30 +21,18 @@ const TimetableState = props => {
 
   const getTimes = async () => {
     try {
-      const res = await axios.get("/api/coursehour/1/1000");
-      console.log(res.data.content);
-      dispatch({ type: GET_TIMES, payload: res.data.content });
+      const res = await axios.get("/api/times");
+      dispatch({ type: GET_TIMES, payload: res.data.data.content });
     } catch (err) {
       dispatch({ type: GET_ERRORS });
     }
   };
   const getSubjects = async () => {
     try {
-      const res = await axios.get("/api/StudentCourseSubject/student/0/2");
+      const res = await axios.get("/api/subjects");
 
-      const allowed = ["courseSubject"];
-      const convertData = [];
-      res.data.forEach(value => {
-        const filtered = Object.keys(value)
-          .filter(key => allowed.includes(key))
-          .reduce((obj, key) => {
-            obj = value[key];
-            return obj;
-          }, null);
-        convertData.push(filtered);
-      });
-      console.log("data:", convertData);
-      dispatch({ type: GET_SUBJECTS, payload: convertData });
+      // console.log("data:", convertData);
+      dispatch({ type: GET_SUBJECTS, payload: res.data.data });
     } catch (err) {
       console.log(err);
       dispatch({ type: GET_ERRORS });

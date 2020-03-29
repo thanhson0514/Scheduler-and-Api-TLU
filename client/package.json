@@ -37,10 +37,10 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "http://localhost:5000/",
   "resolutions": {
     "@babel/preset-env": "7.5.5"
   },
-  "proxy": "http://sv20.tlu.edu.vn:8092/education",
   "devDependencies": {
     "@babel/plugin-proposal-numeric-separator": "^7.8.3"
   }

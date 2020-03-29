@@ -21,11 +21,8 @@ export const MarkState = props => {
   // get Mark
   const getMark = async () => {
     try {
-      const res = await axios.get(
-        "/api/studentsubjectmark/getListStudentMarkBySemester/531/0"
-      );
-      console.log(res.data);
-      dispatch({ type: GET_MARKS, payload: res.data });
+      const res = await axios.get("/api/mark");
+      dispatch({ type: GET_MARKS, payload: res.data.data });
     } catch (err) {
       dispatch({ type: GET_ERRORS });
     }
