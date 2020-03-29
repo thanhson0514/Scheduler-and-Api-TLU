@@ -2,8 +2,19 @@ const axios = require("axios");
 
 exports.getMark = async (req, res) => {
   try {
-    const response = await axios.get(
-      "http://sv20.tlu.edu.vn:8092/education/api/studentsubjectmark/getListStudentMarkBySemester/531/0",
+    let response = await axios.get(
+      "http://sv20.tlu.edu.vn:8092/education/api/student/studentId",
+      {
+        headers: {
+          Authorization: `Bearer ${req.token}`
+        }
+      }
+    );
+
+    const id = response.data.id;
+
+    response = await axios.get(
+      `http://sv20.tlu.edu.vn:8092/education/api/studentsubjectmark/getListStudentMarkBySemester/${id}/0`,
       {
         headers: {
           Authorization: `Bearer ${req.token}`
