@@ -22,7 +22,7 @@ export const Timetable = () => {
   useEffect(() => {
     getSubjects();
     if (!loading) {
-      filterSubject(courseSubject, weekIndex());
+      filterSubject(courseSubject, weekIndex);
     }
     // eslint-disable-next-line
   }, [loading]);
@@ -30,7 +30,7 @@ export const Timetable = () => {
     <Fragment>
       <div className="container-timetable">
         <h1>
-          Week: {weekIndex()}
+          Week: {weekIndex}
           <span>Hello</span>
         </h1>
         {!subject ? (

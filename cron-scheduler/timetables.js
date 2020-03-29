@@ -105,7 +105,7 @@ module.exports = async userId => {
 //         body: JSON.stringify({
 //           messaging_type: "RESPONSE",
 //           recipient: {
-//             id: 2980918408622250
+//             id: 
 //           },
 //           message: {
 //             text: message
@@ -125,7 +125,7 @@ module.exports = async userId => {
 //         body: JSON.stringify({
 //           messaging_type: "RESPONSE",
 //           recipient: {
-//             id: 2980918408622250
+//             id: 
 //           },
 //           message: {
 //             text: "Good afternoon Lê Thanh Sơn"
