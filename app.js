@@ -21,8 +21,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // function timers
 notication.notication();
-app.post("/", messageWebhook);
-app.get("/", verifyWebhook);
+app.post("/message", messageWebhook);
+app.get("/message", verifyWebhook);
 
 if (process.env.NODE_ENV === "production") {
   // Set static folder
