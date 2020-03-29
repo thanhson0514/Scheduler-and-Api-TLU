@@ -33,7 +33,7 @@ FACEBOOK_ACCESS_TOKEN=...
   - Link mongoDB: https://www.mongodb.com/
   - Link create BOT messenger FB: https://developers.facebook.com/apps
 
-> Nếu bán không muốn cài BOT thì bạn comment 2 router có đường dẫn là _"/message"_ và không cần set biến môi trường **_FACEBOOK_ACCESS_TOKEN_**
+> Nếu bn không muốn cài BOT thì bạn comment 2 router có đường dẫn là _"/message"_ và không cần set biến môi trường **_FACEBOOK_ACCESS_TOKEN_**
 
 Sau đó chạy và thưởng thức:
 
