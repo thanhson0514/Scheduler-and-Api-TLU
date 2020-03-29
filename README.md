@@ -41,6 +41,8 @@ Sau đó chạy và thưởng thức:
 npm run dev
 ```
 
+* _Hiện tại tính năng chat BOT Messenger Facebook các biến hơi thốn và khó hiểu nên các bạn có thể xem thì xem chứ mình cũng chịu :)_ 
+
 ---
 
 - **Link tham khảo**: https://lts-tlu.herokuapp.com

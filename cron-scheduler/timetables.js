@@ -71,6 +71,7 @@ module.exports = async userId => {
       }
     }
 
+    // reset database
     let scheduler = await Scheduler.deleteMany();
     schedule.forEach(async element => {
       scheduler = new Scheduler({
