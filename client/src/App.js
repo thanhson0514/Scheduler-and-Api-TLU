@@ -11,10 +11,11 @@ import AuthState from "./actions/auth/AuthState";
 import { UserState } from "./actions/user/UserState";
 import TimetableState from "./actions/timetable/TimetableState";
 import { MarkState } from "./actions/mark/MarkState";
+import { AlertState } from "./actions/alert/AlertState";
 import { PrivateRoute } from "./components/routing/PrivateRoute";
 
 // Components and Router
-import { Home } from "./components/layout/home/Home";
+import { Home } from "./components/layout/Home";
 import { Login } from "./components/auth/Login";
 import { SendPhone } from "./components/auth/SendPhone";
 import { Timetable } from "./components/timetable/Timetable";
@@ -32,25 +33,31 @@ if (localStorage.token) {
 function App() {
   return (
     <AuthState>
-      <UserState>
-        <TimetableState>
-          <MarkState>
-            <Router>
-              <Fragment>
-                <Switch>
-                  <Route exact path="/login" component={Login} />
-                  <PrivateRoute exact path="/" component={Home} />
-                  <PrivateRoute exact path="/timetable" component={Timetable} />
-                  <PrivateRoute exact path="/send" component={SendPhone} />
-                  <PrivateRoute exact path="/mark" component={Mark} />
-                  <Route path="/404" component={Page404} exact />
-                  <Redirect to="/404" />
-                </Switch>
-              </Fragment>
-            </Router>
-          </MarkState>
-        </TimetableState>
-      </UserState>
+      <AlertState>
+        <UserState>
+          <TimetableState>
+            <MarkState>
+              <Router>
+                <Fragment>
+                  <Switch>
+                    <Route exact path="/login" component={Login} />
+                    <PrivateRoute exact path="/" component={Home} />
+                    <PrivateRoute
+                      exact
+                      path="/timetable"
+                      component={Timetable}
+                    />
+                    <PrivateRoute exact path="/send" component={SendPhone} />
+                    <PrivateRoute exact path="/mark" component={Mark} />
+                    <Route path="/404" component={Page404} exact />
+                    <Redirect to="/404" />
+                  </Switch>
+                </Fragment>
+              </Router>
+            </MarkState>
+          </TimetableState>
+        </UserState>
+      </AlertState>
     </AuthState>
   );
 }

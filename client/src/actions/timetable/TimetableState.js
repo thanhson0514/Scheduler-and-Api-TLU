@@ -31,7 +31,6 @@ const TimetableState = props => {
     try {
       const res = await axios.get("/api/subjects");
 
-      // console.log("data:", convertData);
       dispatch({ type: GET_SUBJECTS, payload: res.data.data });
     } catch (err) {
       console.log(err);
@@ -39,22 +38,24 @@ const TimetableState = props => {
     }
   };
 
-  const filterSubject = (courseSubject, weekIndex) => {
-    const subject = [];
-    const timetables = [];
-    for (let i = 0; i < courseSubject.length; i++) {
-      for (let j = 0; j < courseSubject[i].timetables.length; j++) {
-        if (
-          courseSubject[i].timetables[j].fromWeek <= weekIndex &&
-          courseSubject[i].timetables[j].toWeek >= weekIndex
-        ) {
-          subject.push({ ...courseSubject[i], _id: uuid.v4() });
-          timetables.push(courseSubject[i].timetables[j]);
+  const filterSubject = async (courseSubject, index) => {
+    try {
+      const res = await axios({
+        url: "/api/subjects",
+        method: "POST",
+        data: {
+          courseSubject,
+          index
         }
-      }
+      });
+      dispatch({
+        type: FILTER_SUBJECTS,
+        payload: { subject: res.data.subject, timetables: res.data.timetables }
+      });
+    } catch (err) {
+      console.log(err);
+      dispatch({ type: GET_ERRORS });
     }
-    // console.log("response", subject, timetables);
-    dispatch({ type: FILTER_SUBJECTS, payload: { subject, timetables } });
   };
 
   return (

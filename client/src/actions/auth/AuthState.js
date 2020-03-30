@@ -11,19 +11,21 @@ import {
   LOADED_FAIL,
   SEND_EMAIL,
   EMAIL_ERROR,
+  CLEAR_ERRORS,
   LOGOUT
 } from "../types";
 const AuthState = props => {
   const initialState = {
+    errors: "",
     isAuthentication: null,
     loading: true,
-    token: JSON.parse(localStorage.getItem("token"))
+    token: JSON.parse(sessionStorage.getItem("token"))
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   const loadAuth = () => {
-    const token = JSON.parse(localStorage.getItem("token"));
+    const token = JSON.parse(sessionStorage.getItem("token"));
     // console.log(token)
     if (token) {
       dispatch({ type: LOADED_AUTH });
@@ -34,8 +36,8 @@ const AuthState = props => {
 
   // Login
   const login = async formData => {
-    if (localStorage.token) {
-      setToken(localStorage.token);
+    if (sessionStorage.token) {
+      setToken(sessionStorage.token);
     }
     try {
       const { username, password } = formData;
@@ -50,10 +52,18 @@ const AuthState = props => {
 
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     } catch (err) {
+      console.log(err.response.data, err);
       dispatch({
-        type: LOGIN_FAIL
-        // payload: err.response.data.error
+        type: LOGIN_FAIL,
+        payload: err.response.data.msg
       });
+      setTimeout(
+        () =>
+          dispatch({
+            type: CLEAR_ERRORS
+          }),
+        3000
+      );
     }
   };
 
@@ -85,6 +95,7 @@ const AuthState = props => {
         isAuthentication: state.isAuthentication,
         loading: state.loading,
         token: state.token,
+        errors: state.errors,
         login,
         loadAuth,
         logout,

@@ -1,7 +1,9 @@
 import React, { Fragment, useState, useContext, useEffect } from "react";
 
 import AuthContext from "../../actions/auth/authContext";
+import AlertContext from "../../actions/alert/alertContext";
 import setToken from "../../constants/setToken";
+import { Alert } from "../layout/alert/Alert";
 
 import "./Login.css";
 
@@ -11,15 +13,20 @@ export const Login = props => {
     password: ""
   });
   const authContext = useContext(AuthContext);
-  const { login, isAuthentication, token } = authContext;
+  const alertContext = useContext(AlertContext);
+
+  const { login, isAuthentication, token, errors } = authContext;
+  const { setAlert } = alertContext;
   const { username, password } = formData;
 
   useEffect(() => {
     if (isAuthentication && token) {
       setToken(JSON.stringify(token));
       props.history.push("/");
+    } else if (errors) {
+      setAlert("danger", errors);
     }
-  }, [props.history, isAuthentication, token]);
+  }, [errors, props.history, isAuthentication, token]);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -32,6 +39,7 @@ export const Login = props => {
 
   return (
     <Fragment>
+      <Alert />
       <div className="container-form">
         <form className="form-login" onSubmit={onSubmit}>
           <h2>Hello World</h2>

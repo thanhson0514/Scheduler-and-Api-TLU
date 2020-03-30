@@ -18,7 +18,7 @@
 .container-timetable h1 span {
   position: absolute;
   font-size: 24px;
-  color: #EEE;
+  color: #eee;
   background-color: #ff3d02;
   width: 60px;
   height: 26px;
@@ -38,6 +38,47 @@
 
 .container-timetable:hover h1 {
   animation: bounce 400ms ease;
+}
+
+.btn-change-week {
+  width: 40%;
+}
+
+.btn-change-week button {
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-change-week button:nth-child(1) {
+  float: left;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 18px;
+  border: 1px solid red;
+  color: red;
+  background-color: transparent;
+}
+
+.btn-change-week button:nth-child(2) {
+  float: right;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 18px;
+  border: 1px solid purple;
+  color: purple;
+  background-color: transparent;
+}
+
+.btn-change-week button:nth-child(1):hover {
+  background-color: red;
+  color: white;
+}
+
+.btn-change-week button:nth-child(2):hover {
+  background-color: purple;
+  color: white;
 }
 
 @keyframes bounce {

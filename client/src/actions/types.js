@@ -14,3 +14,6 @@ export const GET_MARKS = "GET_MARKS";
 export const GET_ERRORS = "GET_ERRORS";
 export const SEND_EMAIL = "SEND_EMAIL";
 export const EMAIL_ERROR = "EMAIL_ERROR";
+export const SET_ALERT = "SET_ALERT";
+export const CLEAR_ALERT = "CLEAR_ALERT";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";

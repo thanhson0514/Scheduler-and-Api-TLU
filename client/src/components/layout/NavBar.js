@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-import AuthContext from "../../../actions/auth/authContext";
+import AuthContext from "../../actions/auth/authContext";
 import { SideDrawer } from "./SideDrawer";
 import { Backdrop } from "./Backdrop";
 import "./NavBar.css";

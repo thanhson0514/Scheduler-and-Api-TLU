@@ -8,13 +8,16 @@ const authMiddleware = require("../middleware/auth");
 // controllers
 const { auth } = require("../controllers/auth");
 const { getUser } = require("../controllers/user");
-const { getSubject } = require("../controllers/timetables");
+const { getSubject, filterSubject } = require("../controllers/timetables");
 const { getMark } = require("../controllers/mark");
 const { sendPhone } = require("../controllers/send-phone");
 
 router.post("/auth", auth);
 router.get("/user", authMiddleware, getUser);
-router.get("/subjects", authMiddleware, getSubject);
+router
+  .route("/subjects")
+  .get(authMiddleware, getSubject)
+  .post(authMiddleware, filterSubject);
 router.get("/mark", authMiddleware, getMark);
 router.post("/send", authMiddleware, sendPhone);
 

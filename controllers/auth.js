@@ -17,20 +17,34 @@ exports.auth = async (req, res) => {
       data: form
     });
 
-    let auth = await Auth.deleteMany();
+    let auth = await Auth.findOne({ token: response.data.access_token });
+
+    if (auth) {
+      auth = await Auth.deleteMany();
+      auth = new Auth({
+        token: response.data.access_token
+      });
+      await auth.save();
+
+      return res.status(200).json({
+        success: true,
+        access_token: auth.token
+      });
+    }
+
     auth = new Auth({
       token: response.data.access_token
     });
     await auth.save();
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       access_token: auth.token
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json({
-      success: false
+      success: false,
+      msg: 'Invalid credentials'
     });
   }
 };

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, Fragment } from "react";
 import { Redirect, Route } from "react-router-dom";
 import AuthContext from "../../actions/auth/authContext";
-import { NavBar } from "../layout/navbar/NavBar";
+import { NavBar } from "../layout/NavBar";
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
   const authContext = useContext(AuthContext);

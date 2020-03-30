@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-import { Profile } from "../../profile/Profile";
+import { Profile } from "../profile/Profile";
 
 export const Home = () => {
   return (
