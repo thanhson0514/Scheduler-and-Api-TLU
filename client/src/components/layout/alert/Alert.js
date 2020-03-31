@@ -1,20 +1,25 @@
-import React, { useContext } from "react";
+import React from "react";
+import { connect } from "react-redux";
 
-import AlertContext from "../../../actions/alert/alertContext";
 import "./Alert.css";
 
-export const Alert = () => {
-  const alertContext = useContext(AlertContext);
+const Alert = ({ alerts }) => {
+  console.log("alert:", alerts);
   return (
-    <React.Fragment>
-      {alertContext.alert.map(el => (
-        <div className={`alert alert-${el.type}`} key={el.id}>
-          <h3>
-            <i className="fas fa-exclamation-triangle" />{""}
-            {el.msg}
-          </h3>
-        </div>
-      ))}
-    </React.Fragment>
+    !!alerts.length &&
+    alerts.map(alert => (
+      <div className={`alert alert-${alert.type}`} key={alert.id}>
+        <h3>
+          <i className="fas fa-exclamation-triangle" />
+          {""}
+          {alert.msg}
+        </h3>
+      </div>
+    ))
   );
 };
+const mapStateToProps = state => ({
+  alerts: state.alerts
+});
+
+export default connect(mapStateToProps)(Alert);

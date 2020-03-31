@@ -1,6 +1,16 @@
-import { GET_USER, USER_ERROR } from "../types";
+import { GET_USER, USER_ERROR } from "../actions/types";
 
-export default function(state, action) {
+const initialState = {
+  loading: true,
+  displayName: "",
+  studentCode: "",
+  birthPlace: "",
+  email: "",
+  image: null,
+  linkFb: null
+};
+
+export default function(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case GET_USER:
@@ -10,7 +20,6 @@ export default function(state, action) {
         studentCode: payload.studentCode,
         birthPlace: payload.birthPlace,
         email: payload.user.email,
-        person: payload.person,
         linkFb: payload.candidateProfile.linkFb,
         image: `${payload.candidateProfile.admissionsYear}/${payload.candidateProfile.candidateCode}`,
         loading: false

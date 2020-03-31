@@ -1,28 +1,28 @@
 import React, { Fragment, useState, useContext, useEffect } from "react";
+import { connect } from "react-redux";
 
 import AuthContext from "../../actions/auth/authContext";
-import AlertContext from "../../actions/alert/alertContext";
 import setToken from "../../constants/setToken";
-import { Alert } from "../layout/alert/Alert";
+import Alert from "../layout/alert/Alert";
+import { setAlert } from "../../actions/alert";
 
 import "./Login.css";
 
-export const Login = props => {
+const Login = props => {
+  const { setAlert, history } = props;
   const [formData, setFormData] = useState({
     username: "",
     password: ""
   });
   const authContext = useContext(AuthContext);
-  const alertContext = useContext(AlertContext);
 
   const { login, isAuthentication, token, errors } = authContext;
-  const { setAlert } = alertContext;
   const { username, password } = formData;
 
   useEffect(() => {
     if (isAuthentication && token) {
       setToken(JSON.stringify(token));
-      props.history.push("/");
+      history.push("/");
     } else if (errors) {
       setAlert("danger", errors);
     }
@@ -71,3 +71,5 @@ export const Login = props => {
     </Fragment>
   );
 };
+
+export default connect(null, { setAlert })(Login);

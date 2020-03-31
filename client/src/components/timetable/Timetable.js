@@ -39,7 +39,7 @@ export const Timetable = () => {
     <Fragment>
       <div className="container-timetable">
         <marquee>
-          Today: {date.getDay()}/{date.getMonth()}/{date.getFullYear()} -{" "}
+          Today: {date.getDate()}/{date.getMonth() + 1}/{date.getFullYear()} -{" "}
           {date.getHours()}:{minutes}
         </marquee>
         <h1>

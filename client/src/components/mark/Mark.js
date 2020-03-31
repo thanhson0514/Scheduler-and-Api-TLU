@@ -1,12 +1,12 @@
-import React, { useEffect, useContext, Fragment } from "react";
+import React, { useEffect, Fragment } from "react";
+import { connect } from "react-redux";
+import getMark from "../../actions/marks";
 
-import MarkContext from "../../actions/mark/markContext";
 import { MarkItem } from "./MarkItem";
 import Spinner from "../layout/Spinner";
 
-export const Mark = () => {
-  const markContext = useContext(MarkContext);
-  const { getMark, content, loading } = markContext;
+const Mark = props => {
+  const { getMark, content, loading } = props;
   useEffect(() => {
     getMark();
     // eslint-disable-next-line
@@ -33,3 +33,10 @@ export const Mark = () => {
     </Fragment>
   );
 };
+
+const mapStateToProps = state => ({
+  content: state.marks.content,
+  loading: state.marks.loading
+});
+
+export default connect(mapStateToProps, { getMark })(Mark);

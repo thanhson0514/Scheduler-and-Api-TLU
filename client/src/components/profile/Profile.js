@@ -1,14 +1,14 @@
 import React, { Fragment, useContext, useEffect } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import getUser from "../../actions/user";
 import Spinner from "../layout/Spinner";
-import UserContext from "../../actions/user/userContext";
 import AuthContext from "../../actions/auth/authContext";
 // import image from "../../assets/download (1).jpeg";
 import "./Profile.css";
 
-export const Profile = () => {
-  const userContext = useContext(UserContext);
+const Profile = props => {
   const authContext = useContext(AuthContext);
 
   const {
@@ -17,11 +17,10 @@ export const Profile = () => {
     displayName,
     studentCode,
     birthPlace,
-    // person,
     email,
     image,
     loading
-  } = userContext;
+  } = props;
 
   const { token, isAuthentication } = authContext;
 
@@ -103,3 +102,15 @@ export const Profile = () => {
     </Fragment>
   );
 };
+
+const mapStateToProps = state => ({
+  loading: state.user.loading,
+  displayName: state.user.displayName,
+  studentCode: state.user.studentCode,
+  birthPlace: state.user.birthPlace,
+  email: state.user.email,
+  image: state.user.image,
+  linkFb: state.user.linkFb
+});
+
+export default connect(mapStateToProps, { getUser })(Profile);

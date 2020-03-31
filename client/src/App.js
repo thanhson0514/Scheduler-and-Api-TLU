@@ -8,19 +8,20 @@ import {
 
 // Provider Context
 import AuthState from "./actions/auth/AuthState";
-import { UserState } from "./actions/user/UserState";
 import TimetableState from "./actions/timetable/TimetableState";
-import { MarkState } from "./actions/mark/MarkState";
-import { AlertState } from "./actions/alert/AlertState";
 import { PrivateRoute } from "./components/routing/PrivateRoute";
 
 // Components and Router
 import { Home } from "./components/layout/Home";
-import { Login } from "./components/auth/Login";
+import Login from "./components/auth/Login";
 import { SendPhone } from "./components/auth/SendPhone";
 import { Timetable } from "./components/timetable/Timetable";
-import { Mark } from "./components/mark/Mark";
+import Mark from "./components/mark/Mark";
 import { Page404 } from "./components/layout/Page404";
+
+// Redux
+import { Provider } from "react-redux";
+import store from "./store";
 
 import setToken from "./constants/setToken";
 import "./App.css";
@@ -32,33 +33,25 @@ if (localStorage.token) {
 
 function App() {
   return (
-    <AuthState>
-      <AlertState>
-        <UserState>
-          <TimetableState>
-            <MarkState>
-              <Router>
-                <Fragment>
-                  <Switch>
-                    <Route exact path="/login" component={Login} />
-                    <PrivateRoute exact path="/" component={Home} />
-                    <PrivateRoute
-                      exact
-                      path="/timetable"
-                      component={Timetable}
-                    />
-                    <PrivateRoute exact path="/send" component={SendPhone} />
-                    <PrivateRoute exact path="/mark" component={Mark} />
-                    <Route path="/404" component={Page404} exact />
-                    <Redirect to="/404" />
-                  </Switch>
-                </Fragment>
-              </Router>
-            </MarkState>
-          </TimetableState>
-        </UserState>
-      </AlertState>
-    </AuthState>
+    <Provider store={store}>
+      <AuthState>
+        <TimetableState>
+          <Router>
+            <Fragment>
+              <Switch>
+                <Route exact path="/login" component={Login} />
+                <PrivateRoute exact path="/" component={Home} />
+                <PrivateRoute exact path="/timetable" component={Timetable} />
+                <PrivateRoute exact path="/send" component={SendPhone} />
+                <PrivateRoute exact path="/mark" component={Mark} />
+                <Route path="/404" component={Page404} exact />
+                <Redirect to="/404" />
+              </Switch>
+            </Fragment>
+          </Router>
+        </TimetableState>
+      </AuthState>
+    </Provider>
   );
 }
 
