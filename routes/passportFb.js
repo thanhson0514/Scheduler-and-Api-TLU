@@ -9,7 +9,6 @@ router.get("/success", (req, res) => {
 });
 
 router.get("/fail", (req, res) => res.json({ msg: "Fail" }));
-
 router.get(
   "/login/facebook",
   passport.authenticate("facebook", { scope: ["user_friends"] })
