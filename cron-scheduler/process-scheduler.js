@@ -2,7 +2,7 @@ const Scheduler = require("../models/scheduler");
 const schedule = require("node-schedule");
 const sendTextMessage = require("./send-text-message");
 
-exports.notication = async () => {
+exports.notication = async (hour = 22, minutes = 30) => {
   try {
     const scheduler = await Scheduler.find();
     const id = scheduler[0].idUser;
@@ -22,7 +22,7 @@ exports.notication = async () => {
       );
     });
 
-    schedule.scheduleJob("00 14 22 * * *", () => {
+    schedule.scheduleJob(`00 ${minutes + 2} ${hour} * * *`, () => {
       sendTextMessage(
         id,
         "Good Night, Buổi tối vui vẻ code nhiều bug :). Yêu Sơn <3 !"

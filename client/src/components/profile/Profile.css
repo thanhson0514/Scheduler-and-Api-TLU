@@ -43,6 +43,7 @@
 }
 
 .sayHi h3 {
+  width: 70%;
   transition: 250ms ease;
   margin-top: 15px;
   cursor: pointer;
@@ -51,41 +52,7 @@
 .sayHi h3 span {
   transition: 300ms ease;
   color: #ff3333;
-}
-
-.sayHi h3:before {
-  transition: 200ms all cubic-bezier(0.68, -0.55, 0.26, 1.55);
-  content: "Hello";
-  opacity: 0;
-  font-size: 15px;
-  transition: 200ms ease;
-  width: 50px;
-  height: 15px;
-  background-color: darkorange;
-  position: relative;
-  padding: 4px 0;
-  text-align: center;
-  margin: 0;
-  position: absolute;
-  left: 0;
-  top: -50%;
-}
-
-.sayHi h3:after {
-  content: "";
-  opacity: 0;
-  transition: 200ms all cubic-bezier(0.68, -0.55, 0.26, 2);
-  position: absolute;
-  top: -0%;
-  left: 0;
-  content: "";
-  height: 0;
-  width: 0;
-  border-style: solid;
-  border-width: 4px;
-  border-color: transparent;
-  border-top-color: darkorange;
-  border-left-color: darkorange;
+  margin: 0 .3rem;
 }
 
 .sayHi h3 span:hover {
@@ -202,6 +169,7 @@
     justify-content: center;
   }
   .info h3 {
+    width: 100%;
     margin-bottom: 0.5rem;
   }
   .sayHi h3:before {

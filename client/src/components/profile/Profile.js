@@ -1,15 +1,33 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Favorite from "@material-ui/icons/Favorite";
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import { makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import getUser from "../../actions/user";
-import Spinner from "../layout/Spinner";
 import AuthContext from "../../actions/auth/authContext";
 // import image from "../../assets/download (1).jpeg";
 import "./Profile.css";
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    "justify-content": "center",
+    "align-items": "center",
+    width: "100%",
+    height: "100vh",
+    "& > * + *": {
+      marginLeft: theme.spacing(2)
+    }
+  }
+}));
+
 const Profile = props => {
   const authContext = useContext(AuthContext);
+  const classes = useStyles();
 
   const {
     getUser,
@@ -32,7 +50,9 @@ const Profile = props => {
   }, [token]);
 
   return loading ? (
-    <Spinner />
+    <div className={classes.root}>
+      <CircularProgress color="secondary" />
+    </div>
   ) : (
     <Fragment>
       <div className="container-user">
@@ -44,6 +64,15 @@ const Profile = props => {
             <div className="sayHi">
               <h3>
                 Hi <span>{displayName}</span>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      icon={<FavoriteBorder />}
+                      checkedIcon={<Favorite />}
+                      name="checkedH"
+                    />
+                  }
+                />
               </h3>
             </div>
             {!linkFb ? <p>https://100co.com</p> : <p>{linkFb}</p>}
@@ -64,38 +93,7 @@ const Profile = props => {
                 <h5>Place:</h5>
                 <p>{birthPlace}</p>
               </div>
-              {/* <div className="view-more">
-                <button className="view-more-btn">More</button>
-              </div> */}
             </div>
-            <div className="footer-responsive">
-              <Link to="#">
-                <i className="fab fa-github" />
-              </Link>
-              <Link to="#">
-                <i className="fab fa-facebook" />
-              </Link>
-              <Link to="#">
-                <i className="fab fa-google" />
-              </Link>
-              <Link to="#">
-                <i className="fab fa-twitter" />
-              </Link>
-            </div>
-          </div>
-          <div className="footer-user">
-            <Link to="#">
-              <i className="fab fa-github" />
-            </Link>
-            <Link to="#">
-              <i className="fab fa-facebook" />
-            </Link>
-            <Link to="#">
-              <i className="fab fa-google" />
-            </Link>
-            <Link to="#">
-              <i className="fab fa-twitter" />
-            </Link>
           </div>
         </div>
       </div>

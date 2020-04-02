@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import AuthContext from "../../actions/auth/authContext";
 import setToken from "../../constants/setToken";
-import Alert from "../layout/alert/Alert";
+import Alerts from "../layout/alert/Alert";
 import { setAlert } from "../../actions/alert";
 
 import "./Login.css";
@@ -24,7 +24,7 @@ const Login = props => {
       setToken(JSON.stringify(token));
       history.push("/");
     } else if (errors) {
-      setAlert("danger", errors);
+      setAlert("error", errors);
     }
   }, [errors, props.history, isAuthentication, token]);
 
@@ -39,7 +39,7 @@ const Login = props => {
 
   return (
     <Fragment>
-      <Alert />
+      <Alerts />
       <div className="container-form">
         <form className="form-login" onSubmit={onSubmit}>
           <h2>Hello World</h2>

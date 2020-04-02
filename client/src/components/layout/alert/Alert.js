@@ -1,19 +1,27 @@
 import React from "react";
+import { Alert } from "@material-ui/lab";
+import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 
 import "./Alert.css";
 
-const Alert = ({ alerts }) => {
-  console.log("alert:", alerts);
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: "100%",
+    "& > * + *": {
+      marginTop: theme.spacing(4)
+    }
+  }
+}));
+
+const Alerts = ({ alerts }) => {
+  const classes = useStyles();
+
   return (
     !!alerts.length &&
     alerts.map(alert => (
-      <div className={`alert alert-${alert.type}`} key={alert.id}>
-        <h3>
-          <i className="fas fa-exclamation-triangle" />
-          {""}
-          {alert.msg}
-        </h3>
+      <div className={classes.root}>
+        <Alert severity={alert.type}>{alert.msg}</Alert>
       </div>
     ))
   );
@@ -22,4 +30,4 @@ const mapStateToProps = state => ({
   alerts: state.alerts
 });
 
-export default connect(mapStateToProps)(Alert);
+export default connect(mapStateToProps)(Alerts);

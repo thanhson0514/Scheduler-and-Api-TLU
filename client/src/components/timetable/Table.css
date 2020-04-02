@@ -43,3 +43,9 @@
 .container-table:hover h4 {
   transform: scale(1.1);
 }
+
+@media (max-width: 580px) {
+  .container-table {
+    width: 100%;
+  }
+}

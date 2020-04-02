@@ -83,7 +83,11 @@ module.exports = async userId => {
       await scheduler.save();
     });
 
-    return sendTextMessage(userId, "Update success!! yêu");
+    sendTextMessage(userId, "Update success!! yêu");
+    const date = new Date()
+    const hour = date.getHours()
+    const minutes = date.getMinutes()
+    return require("./cron-scheduler/process-scheduler").notication(hour, minutes);
   } catch (err) {
     sendTextMessage(userId, "Update failed! Mạng như b*** không update được.");
     throw new Error("Error");
@@ -106,7 +110,7 @@ module.exports = async userId => {
 //         body: JSON.stringify({
 //           messaging_type: "RESPONSE",
 //           recipient: {
-//             id: 
+//             id:
 //           },
 //           message: {
 //             text: message
@@ -126,7 +130,7 @@ module.exports = async userId => {
 //         body: JSON.stringify({
 //           messaging_type: "RESPONSE",
 //           recipient: {
-//             id: 
+//             id:
 //           },
 //           message: {
 //             text: "Good afternoon Lê Thanh Sơn"
