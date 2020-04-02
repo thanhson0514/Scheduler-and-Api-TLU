@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const passport = require("passport");
 const Strategy = require("passport-facebook").Strategy;
-const _ = require('lodash')
+const _ = require("lodash");
 
 // router
 const verifyWebhook = require("./cron-scheduler/verify-webhook");
@@ -52,9 +52,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //   cb(null, obj);
 // });
 
-// function timers
-notication.notication();
-
 // passport facebook
 // app.use("/", passportRouter);
 // Api get infomation TLU
@@ -78,6 +75,8 @@ if (process.env.NODE_ENV === "production") {
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
+    notication.notication();
     app.listen(PORT, () => console.log(`Listing to port on ${PORT}`));
+    // function timers
   })
   .catch(err => console.log(err));
