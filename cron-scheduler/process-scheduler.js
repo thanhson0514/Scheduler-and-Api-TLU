@@ -27,7 +27,7 @@ exports.notication = async (hour = 22, minutes = 30) => {
     schedule.scheduleJob(`00 ${minutes + 2} ${hour} * * *`, () => {
       sendTextMessage(
         FACEBOOK_ID_USER,
-        "Good Night, Buổi tối vui vẻ code nhiều bug :). Yêu Sơn <3 !"
+        `Bạn đã update vào khoảng ${hour}:${minutes} vào 1 ngày đẹp trời không biết ngày bao nhiêu :))`
       );
     });
   } catch (err) {
