@@ -84,10 +84,10 @@ module.exports = async userId => {
     });
 
     sendTextMessage(userId, "Update success!! yêu");
-    const date = new Date()
-    const hour = date.getHours()
-    const minutes = date.getMinutes()
-    return require("./cron-scheduler/process-scheduler").notication(hour, minutes);
+    const date = new Date();
+    const hour = date.getHours();
+    const minutes = date.getMinutes();
+    return require("./process-scheduler").notication(hour, minutes);
   } catch (err) {
     sendTextMessage(userId, "Update failed! Mạng như b*** không update được.");
     throw new Error("Error");
