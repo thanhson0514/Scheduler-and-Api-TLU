@@ -37,7 +37,6 @@ FACEBOOK_ACCESS_TOKEN=...
 > Nếu bán không muốn cài BOT thì bạn comment 2 router có đường dẫn là _"/message"_, bạn tắt luôn cái middleware của passport luôn nha :D.Cái phần passport các bạn có thể search google và tìm hiểu chức năng này, trong dự án này mình dùng nó để phục vụ cho con BOT chat của mình. Bây giờ bạn không cần set biến môi trường **_FACEBOOK_ACCESS_TOKEN_**
 =======
 > Nếu bn không muốn cài BOT thì bạn comment 2 router có đường dẫn là _"/message"_ và không cần set biến môi trường **_FACEBOOK_ACCESS_TOKEN_**
->>>>>>> afa533250219c2441d00b474fcf92b058d72300b
 
 Sau đó chạy và thưởng thức:
 
