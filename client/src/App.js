@@ -15,7 +15,7 @@ import { PrivateRoute } from "./components/routing/PrivateRoute";
 import { Home } from "./components/layout/Home";
 import Login from "./components/auth/Login";
 import { SendPhone } from "./components/auth/SendPhone";
-import { Timetable } from "./components/timetable/Timetable";
+import Timetable from "./components/timetable/Timetable";
 import Mark from "./components/mark/Mark";
 import { Page404 } from "./components/layout/Page404";
 

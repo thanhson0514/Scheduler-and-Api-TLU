@@ -26,7 +26,9 @@ export default function(state, action) {
         ...state,
         subjects: [],
         times: [],
-        loading: true
+        loading: true,
+        success: false,
+        error: payload
       };
     default:
       return state;

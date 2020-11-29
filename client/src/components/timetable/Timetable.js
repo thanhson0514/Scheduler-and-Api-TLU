@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, Fragment, useState } from "react";
+import { connect } from "react-redux";
 
 import TimetableContext from "../../actions/timetable/timetableContext";
 import { Table } from "./Table";
 import Snipper from "../layout/Spinner";
 import weekIndex from "./weekIndex";
+import Alert from "../layout/alert/Alert";
+import { setAlert } from "../../actions/alert";
 
 import "./Timetable.css";
 
-export const Timetable = () => {
+const Timetable = props => {
   const date = new Date();
   const timetableContext = useContext(TimetableContext);
   const [index, setIndex] = useState(weekIndex);
@@ -18,20 +21,24 @@ export const Timetable = () => {
     courseSubject,
     filterSubject,
     timetables,
-    subject
+    subject,
+    success,
+    error
   } = timetableContext;
   // getSubjects();
   useEffect(() => {
     getSubjects();
-    if (!loading) {
+    if (!loading && success) {
       filterSubject(courseSubject, index);
+    } else if (error) {
+      setAlert("error", error);
     }
     // eslint-disable-next-line
-  }, [loading, index]);
-  const increase = e => {
+  }, [loading, index, error]);
+  const increase = (e) => {
     setIndex(index + 1);
   };
-  const decrease = e => {
+  const decrease = (e) => {
     setIndex(index - 1);
   };
   setInterval(() => setMinutes(minutes + 1), 60000);
@@ -50,11 +57,17 @@ export const Timetable = () => {
           <button onClick={increase}>+</button>
           <button onClick={decrease}>-</button>
         </div>
-        {!subject ? (
-          <Snipper />
-        ) : !subject.length ? (
-          <h1>Không có lịch quẩy thôi :))</h1>
-        ) : (
+        {!subject ?
+            !error ?
+            <Snipper />:(
+              <div>
+                <Alert />
+                <h1 style={{color: '#f11'}}>Lịch học chưa cập nhật</h1>
+              </div>
+            )
+        : !subject.length ?
+          <h1>Không có lịch quẩy thôi!</h1>
+          : (
           subject.map((sub, index) => (
             <Table
               key={sub._id}
@@ -67,3 +80,5 @@ export const Timetable = () => {
     </Fragment>
   );
 };
+
+export default connect(null, { setAlert })(Timetable);

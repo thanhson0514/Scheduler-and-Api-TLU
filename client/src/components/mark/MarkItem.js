@@ -13,11 +13,11 @@ export const MarkItem = ({
 }) => {
   return (
     <div className="info-mark">
-      <h3>Subject: {subjectName}</h3>
+      <h3> Môn: {subjectName}</h3>
       <div className="content">
         <div className="content__right">
-          <div className="content__mark">Mark: {mark}</div>
-          <div className="content__mark4">coefficient 4: {mark4}</div>
+          <div className="content__mark">Điểm: {mark}</div>
+          <div className="content__mark4">Thang Điểm 4: {mark4}</div>
         </div>
         <div
           className={`content__charMark content__charMark-${filterCharMark(

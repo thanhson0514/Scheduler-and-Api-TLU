@@ -7,18 +7,19 @@ exports.times = async (req, res) => {
       "http://sv20.tlu.edu.vn:8092/education/api/StudentCourseSubject/student/0/2",
       {
         headers: {
-          Authorization: `Bearer ${req.token}`
-        }
+          Authorization: `Bearer ${req.token}`,
+        },
       }
     );
 
     res.status(200).json({
       success: true,
-      data: response.data
+      data: response.data,
     });
   } catch (err) {
     res.status(500).json({
-      succes: false
+      succes: false,
+      msg: "Thời khóa biểu chưa cập nhật",
     });
   }
 };
@@ -29,24 +30,25 @@ exports.getSubject = async (req, res) => {
       "http://sv20.tlu.edu.vn:8092/education/api/StudentCourseSubject/student/0/2",
       {
         headers: {
-          Authorization: `Bearer ${req.token}`
-        }
+          Authorization: `Bearer ${req.token}`,
+        },
       }
     );
 
     const convertData = [];
-    response.data.forEach(value => {
+    response.data.forEach((value) => {
       const courseSubjects = _.get(value, "courseSubject");
       convertData.push(courseSubjects);
     });
 
     return res.status(200).json({
       success: true,
-      data: convertData
+      data: convertData,
     });
   } catch (err) {
     res.status(500).json({
-      succes: false
+      succes: false,
+      msg: "Thời khóa biểu chưa cập nhật",
     });
   }
 };
@@ -73,12 +75,13 @@ exports.filterSubject = async (req, res) => {
     return res.status(200).json({
       success: true,
       subject: subject,
-      timetables: timetables
+      timetables: timetables,
     });
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      succes: false
+      succes: false,
+      msg: "Thời khóa biểu chưa cập nhật",
     });
   }
 };

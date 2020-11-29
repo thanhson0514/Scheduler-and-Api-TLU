@@ -11,7 +11,7 @@ const { getUser } = require("../controllers/user");
 const { getSubject, filterSubject } = require("../controllers/timetables");
 const { getMark } = require("../controllers/mark");
 const { sendPhone } = require("../controllers/send-phone");
-
+const { getChart } = require("../controllers/chart");
 router.post("/auth", auth);
 router.get("/user", authMiddleware, getUser);
 router
@@ -20,5 +20,5 @@ router
   .post(authMiddleware, filterSubject);
 router.get("/mark", authMiddleware, getMark);
 router.post("/send", authMiddleware, sendPhone);
-
+router.get("/chart", authMiddleware,getChart);
 module.exports = router;

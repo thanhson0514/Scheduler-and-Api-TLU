@@ -12,8 +12,11 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  position: relative;
 }
 .form-login {
+  width: 250px;
+  height: auto;
   border-radius: 5px;
   background-color: white;
   padding: 1rem 1.2rem;
@@ -55,6 +58,15 @@ input:valid + label {
   left: 10px;
   font-size: 13.5px;
   color: dodgerblue;
+}
+
+.sub-title {
+  font-size: 10px;
+}
+
+.sub-title p {
+  color: #e00;
+  font-style: italic;
 }
 
 .btn {

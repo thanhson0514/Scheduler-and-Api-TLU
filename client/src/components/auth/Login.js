@@ -39,10 +39,10 @@ const Login = props => {
 
   return (
     <Fragment>
-      <Alerts />
       <div className="container-form">
         <form className="form-login" onSubmit={onSubmit}>
-          <h2>Hello World</h2>
+          <h2>Sinh Viên Thủy Lợi</h2>
+          <Alerts />
           <div className="input-group">
             <input
               type="text"
@@ -62,6 +62,9 @@ const Login = props => {
               required
             />
             <label htmlFor="password">Password</label>
+          </div>
+          <div className="sub-title">
+            <p>*Đăng nhập bằng mã sinh viên</p>
           </div>
           <button type="submit" className="btn">
             Login

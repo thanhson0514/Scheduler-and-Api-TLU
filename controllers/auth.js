@@ -44,7 +44,7 @@ exports.auth = async (req, res) => {
   } catch (err) {
     res.status(500).json({
       success: false,
-      msg: 'Invalid credentials'
+      msg: 'Tài khoản không tồn tại hoặc mật khẩu sai'
     });
   }
 };

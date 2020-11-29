@@ -33,7 +33,6 @@ nav a:hover {
 }
 
 .tool {
-  opacity: 0;
   position: absolute;
   right: 4px;
   font-size: 12px;
@@ -47,11 +46,6 @@ nav a:hover {
 
 .tool a i {
   transform: translateX(-2px);
-}
-
-nav:hover .tool {
-  animation: bounceInRight 1s ease;
-  opacity: 1;
 }
 
 .tool a:hover {

@@ -8,13 +8,15 @@ import { GET_TIMES, GET_SUBJECTS, GET_ERRORS, FILTER_SUBJECTS } from "../types";
 // http://sv20.tlu.edu.vn:8092/education/api/coursehour/1/1000 @1000
 // http://sv20.tlu.edu.vn:8092/education/api/StudentCourseSubject/student/0/2
 
-const TimetableState = props => {
+const TimetableState = (props) => {
   const initialState = {
     courseSubject: [],
     times: [],
     loading: true,
     subject: null,
-    timetables: []
+    timetables: [],
+    success: true,
+    error: "",
   };
 
   const [state, dispatch] = useReducer(timetableReducer, initialState);
@@ -24,7 +26,7 @@ const TimetableState = props => {
       const res = await axios.get("/api/times");
       dispatch({ type: GET_TIMES, payload: res.data.data.content });
     } catch (err) {
-      dispatch({ type: GET_ERRORS });
+      dispatch({ type: GET_ERRORS, payload: err.response.data.msg });
     }
   };
   const getSubjects = async () => {
@@ -34,7 +36,7 @@ const TimetableState = props => {
       dispatch({ type: GET_SUBJECTS, payload: res.data.data });
     } catch (err) {
       console.log(err);
-      dispatch({ type: GET_ERRORS });
+      dispatch({ type: GET_ERRORS, payload: err.response.data.msg });
     }
   };
 
@@ -45,16 +47,16 @@ const TimetableState = props => {
         method: "POST",
         data: {
           courseSubject,
-          index
-        }
+          index,
+        },
       });
       dispatch({
         type: FILTER_SUBJECTS,
-        payload: { subject: res.data.subject, timetables: res.data.timetables }
+        payload: { subject: res.data.subject, timetables: res.data.timetables },
       });
     } catch (err) {
       console.log(err);
-      dispatch({ type: GET_ERRORS });
+      dispatch({ type: GET_ERRORS, payload: err.response.data.msg });
     }
   };
 
@@ -66,9 +68,11 @@ const TimetableState = props => {
         subject: state.subject,
         timetables: state.timetables,
         loading: state.loading,
+        error: state.error,
+        success: state.success,
         getSubjects,
         getTimes,
-        filterSubject
+        filterSubject,
       }}
     >
       {props.children}
